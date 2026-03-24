@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Oprova AI | Agent Transformation</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Berkeley+Mono&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <style>
         body {
@@ -14,9 +14,12 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             width: 100vw;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
         .berkeley-mono {
-            font-family: 'Berkeley Mono', monospace;
+            font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
         }
         .glow-pulse {
             background: radial-gradient(circle, rgba(30, 134, 255, 0.08) 0%, rgba(18, 19, 21, 0) 70%);
@@ -41,6 +44,59 @@
         }
         html, main {
             scroll-behavior: smooth;
+        }
+        /* Scroll animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+        }
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .stagger > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+        .stagger.visible > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+        .stagger.visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+        .stagger.visible > *:nth-child(4) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
         }
         ::-webkit-scrollbar {
             width: 4px;
@@ -139,7 +195,7 @@
 <main class="relative z-10 w-screen overflow-x-hidden overflow-y-auto h-screen snap-y snap-mandatory">
 <!-- Scene 1: Opening - Centered -->
 <section class="scene items-center text-center">
-<div class="w-full">
+<div class="w-full fade-up">
 <span class="berkeley-mono text-[10px] tracking-[0.3em] text-secondary mb-6 block uppercase">Phase 01 / Initiation</span>
 <h1 class="text-[clamp(2.5rem,8vw,7rem)] font-[900] leading-[0.85] tracking-[-0.07em] uppercase mb-8 mx-auto">
                     Companies run on agents.
@@ -160,7 +216,7 @@
 <div class="h-[1px] w-3/4 bg-white"></div>
 <div class="h-[1px] w-1/2 bg-white"></div>
 </div>
-<div class="flex flex-col gap-12 text-right">
+<div class="flex flex-col gap-12 text-right slide-right">
 <h2 class="text-4xl md:text-[clamp(3rem,5vw,5.5rem)] font-black tracking-tighter uppercase leading-[0.9] text-white">
                         Most companies are still <br/><span class="text-white/30">human-operated.</span>
 </h2>
@@ -174,8 +230,8 @@
 </section>
 <!-- Scene 3: Tension - Centered -->
 <section class="scene items-center text-center">
-<div class="w-full">
-<h3 class="text-4xl md:text-[clamp(3rem,7vw,6rem)] font-black tracking-widest uppercase text-white mb-4">
+<div class="w-full scale-in">
+<h3 class="text-3xl md:text-[clamp(2.5rem,5vw,5rem)] font-black tracking-tight uppercase text-white mb-4">
                     This is what limits scale.
                 </h3>
 <div class="w-32 h-[1px] bg-secondary mx-auto mt-16 opacity-50"></div>
@@ -183,7 +239,7 @@
 </section>
 <!-- Scene 4: Shift - Centered -->
 <section class="scene items-center text-center">
-<div class="w-full">
+<div class="w-full fade-up">
 <p class="berkeley-mono text-sm text-secondary-fixed-dim mb-8">System Update in Progress_</p>
 <h2 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black tracking-tighter uppercase leading-[0.8] mb-12">
                     A new model <br/>is emerging.
@@ -194,7 +250,7 @@
 <!-- Scene 5: Introduction - Balanced Grid -->
 <section class="scene items-center">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center w-full">
-<div class="text-left">
+<div class="text-left slide-left">
 <h2 class="text-4xl md:text-[clamp(3rem,5vw,5.5rem)] font-black tracking-tighter uppercase leading-[0.9] mb-10">
                         Oprova AI enables this transformation.
                     </h2>
@@ -202,7 +258,7 @@
                         A system of agents that understands, decides, and operates.
                     </p>
 </div>
-<div class="relative aspect-square overflow-hidden bg-surface-container-high/20 flex items-center justify-center">
+<div class="relative aspect-square overflow-hidden bg-surface-container-high/20 flex items-center justify-center fade-in">
 <img alt="Abstract geometric monolith" class="w-full h-full object-cover grayscale opacity-60 mix-blend-lighten scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHc75SBQMUV33J5AYfiTygDT8sgQB4rd7jE8f7QmFmnzj4c_l7bnWLLEFGh26ujqEc9oh3SvjKifGV6GJZUvDi-ewQnxqXyETzucUdvaH7RODvFisRXDzSBpGDhZWVd5ulQxxbnjKADc_TQmxsR0dB7FZTBFCDPce6rjT6luXmCsNhuCNpb7F8_zw2r9IsJrIkFXE6B-fVSqSEZeMUBo8ODT5i9wVLNaLhn8lcScL4gznhLFYLDWOwP_LgScADVi6sp2tELXPSdZg"/>
 </div>
 </div>
@@ -220,7 +276,7 @@
 <div></div>
 </div>
 <!-- Center Node -->
-<div class="absolute z-20 flex flex-col items-center">
+<div class="absolute z-20 flex flex-col items-center scale-in">
 <div class="w-48 h-48 rounded-full border border-secondary/30 flex items-center justify-center backdrop-blur-2xl">
 <span class="berkeley-mono text-secondary text-2xl tracking-[0.2em]">CORE</span>
 </div>
@@ -250,7 +306,7 @@
 </section>
 <!-- Scene 7: Philosophy - Centered Stack -->
 <section id="vision" class="scene items-center text-center">
-<div class="space-y-16 w-full max-w-none flex flex-col items-center">
+<div class="space-y-16 w-full max-w-none flex flex-col items-center stagger">
 <div class="flex flex-col md:flex-row items-center gap-6">
 <span class="berkeley-mono text-xs text-secondary-fixed-dim uppercase tracking-widest shrink-0">STATUS: DEFINED</span>
 <h3 class="text-6xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none">Not software.</h3>
@@ -267,7 +323,7 @@
 </section>
 <!-- Scene 8: Outcome - Balanced Horizontal Grid -->
 <section class="scene bg-surface-container-low/30">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 w-full">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 w-full stagger">
 <div class="space-y-8 border-l border-white/10 pl-8 transition-colors hover:border-secondary/50 duration-700">
 <p class="berkeley-mono text-[10px] text-secondary tracking-[0.4em]">TEMPORAL</p>
 <h4 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight">Work becomes continuous.</h4>
@@ -284,7 +340,7 @@
 </section>
 <!-- Scene 9: Closing CTA - Centered -->
 <section id="contact" class="scene items-center justify-center text-center">
-<div class="max-w-7xl w-full">
+<div class="max-w-7xl w-full fade-up">
 <h2 class="text-5xl md:text-[clamp(3.5rem,7vw,7rem)] font-black tracking-tighter uppercase mb-16 leading-[0.85]">
                     Initialize the <br/>Agent Era.
                 </h2>
@@ -310,11 +366,29 @@
 </main>
 <!-- Footer -->
 <footer class="fixed bottom-0 w-full z-40 flex justify-between items-center px-8 py-10 bg-transparent pointer-events-none">
-<div class="font-['Berkeley_Mono'] text-[10px] tracking-widest uppercase text-white/30 pointer-events-auto">
+<div class="berkeley-mono text-[10px] tracking-widest uppercase text-white/30 pointer-events-auto">
             © 2026 OPROVA AI CO., LTD. ALL RIGHTS RESERVED.
         </div>
 <div class="flex gap-10 pointer-events-auto">
-<a class="font-['Berkeley_Mono'] text-[10px] tracking-widest uppercase text-white/30 hover:text-white transition-colors" href="mailto:mason@oprova.ai">Contact</a>
+<a class="berkeley-mono text-[10px] tracking-widest uppercase text-white/30 hover:text-white transition-colors" href="mailto:mason@oprova.ai">Contact</a>
 </div>
 </footer>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2, root: document.querySelector('main') });
+
+    document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right, .scale-in, .stagger').forEach(el => {
+        observer.observe(el);
+    });
+
+    // First scene visible immediately
+    setTimeout(() => {
+        document.querySelectorAll('.scene:first-child .fade-up').forEach(el => el.classList.add('visible'));
+    }, 300);
+</script>
 </body></html>
