@@ -34,14 +34,6 @@
             padding: 0 8%;
             scroll-snap-align: start;
         }
-        .text-reveal {
-            opacity: 0.9;
-            transition: opacity 1s ease-in-out;
-        }
-        .glass-panel {
-            backdrop-filter: blur(40px);
-            background: rgba(31, 32, 33, 0.6);
-        }
         html, main {
             scroll-behavior: smooth;
         }
@@ -196,12 +188,11 @@
 <!-- Scene 1: Opening - Centered -->
 <section class="scene items-center text-center">
 <div class="w-full fade-up">
-<span class="berkeley-mono text-[10px] tracking-[0.3em] text-secondary mb-6 block uppercase">Phase 01 / Initiation</span>
 <h1 class="text-[clamp(2.5rem,8vw,7rem)] font-[900] leading-[0.85] tracking-[-0.07em] uppercase mb-8 mx-auto">
-                    Companies run on agents.
+                    Companies run<br/>on agents.
                 </h1>
-<p class="text-xl md:text-3xl font-light tracking-tight text-on-surface-variant max-w-4xl mx-auto">
-                    Oprova AI transforms your company into an agent-operated system.
+<p class="text-xl md:text-2xl font-light tracking-tight text-on-surface-variant max-w-3xl mx-auto">
+                    We transform your company into an agent-operated system.
                 </p>
 </div>
 <div class="absolute bottom-12 left-1/2 -translate-x-1/2">
@@ -240,11 +231,12 @@
 <!-- Scene 4: Shift - Centered -->
 <section class="scene items-center text-center">
 <div class="w-full fade-up">
-<p class="berkeley-mono text-sm text-secondary-fixed-dim mb-8">System Update in Progress_</p>
 <h2 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black tracking-tighter uppercase leading-[0.8] mb-12">
-                    A new model <br/>is emerging.
+                    A new operating<br/>model is here.
                 </h2>
-<p class="text-3xl md:text-5xl font-black text-white/40 uppercase tracking-tighter">Companies run on agents.</p>
+<p class="text-xl md:text-2xl font-light text-on-surface-variant max-w-3xl mx-auto">
+                    Agents that reason, decide, and execute — working alongside your team, 24/7.
+                </p>
 </div>
 </section>
 <!-- Scene 5: Introduction - Balanced Grid -->
@@ -306,35 +298,29 @@
 </section>
 <!-- Scene 7: Philosophy - Centered Stack -->
 <section id="vision" class="scene items-center text-center">
-<div class="space-y-16 w-full max-w-none flex flex-col items-center stagger">
-<div class="flex flex-col md:flex-row items-center gap-6">
-<span class="berkeley-mono text-xs text-secondary-fixed-dim uppercase tracking-widest shrink-0">STATUS: DEFINED</span>
-<h3 class="text-6xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none">Not software.</h3>
-</div>
-<div class="flex flex-col md:flex-row items-center gap-6">
-<span class="berkeley-mono text-xs text-secondary-fixed-dim uppercase tracking-widest shrink-0">STATUS: DEFINED</span>
-<h3 class="text-6xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none text-white/40">Not automation.</h3>
-</div>
-<div class="flex flex-col md:flex-row items-center gap-6">
-<span class="berkeley-mono text-xs text-secondary-fixed-dim uppercase tracking-widest shrink-0">STATUS: EVOLVED</span>
-<h3 class="text-6xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none text-white/10">A new model.</h3>
-</div>
+<div class="space-y-12 w-full max-w-none flex flex-col items-center stagger">
+<h3 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none">Not software.</h3>
+<h3 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none text-white/40">Not automation.</h3>
+<h3 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none text-white/15">Agent intelligence.</h3>
 </div>
 </section>
 <!-- Scene 8: Outcome - Balanced Horizontal Grid -->
 <section class="scene bg-surface-container-low/30">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 w-full stagger">
-<div class="space-y-8 border-l border-white/10 pl-8 transition-colors hover:border-secondary/50 duration-700">
-<p class="berkeley-mono text-[10px] text-secondary tracking-[0.4em]">TEMPORAL</p>
-<h4 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight">Work becomes continuous.</h4>
+<div class="space-y-6 border-l border-white/10 pl-8 transition-colors hover:border-secondary/50 duration-700">
+<p class="berkeley-mono text-[10px] text-secondary tracking-[0.4em]">ALWAYS ON</p>
+<h4 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-tight">Work never stops.</h4>
+<p class="text-base text-on-surface-variant font-light">Agents operate around the clock, beyond human working hours.</p>
 </div>
-<div class="space-y-8 border-l border-white/10 pl-8 transition-colors hover:border-secondary/50 duration-700">
-<p class="berkeley-mono text-[10px] text-secondary tracking-[0.4em]">CONTROL</p>
-<h4 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight">Execution becomes autonomous.</h4>
+<div class="space-y-6 border-l border-white/10 pl-8 transition-colors hover:border-secondary/50 duration-700">
+<p class="berkeley-mono text-[10px] text-secondary tracking-[0.4em]">AUTONOMOUS</p>
+<h4 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-tight">Decisions at speed.</h4>
+<p class="text-base text-on-surface-variant font-light">From data to action, without bottlenecks or handoffs.</p>
 </div>
-<div class="space-y-8 border-l border-white/10 pl-8 transition-colors hover:border-secondary/50 duration-700">
-<p class="berkeley-mono text-[10px] text-secondary tracking-[0.4em]">IDENTITY</p>
-<h4 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight">Companies become agentic.</h4>
+<div class="space-y-6 border-l border-white/10 pl-8 transition-colors hover:border-secondary/50 duration-700">
+<p class="berkeley-mono text-[10px] text-secondary tracking-[0.4em]">SCALABLE</p>
+<h4 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-tight">Grow without limits.</h4>
+<p class="text-base text-on-surface-variant font-light">Scale operations without scaling headcount.</p>
 </div>
 </div>
 </section>
@@ -342,7 +328,7 @@
 <section id="contact" class="scene items-center justify-center text-center">
 <div class="max-w-7xl w-full fade-up">
 <h2 class="text-5xl md:text-[clamp(3.5rem,7vw,7rem)] font-black tracking-tighter uppercase mb-16 leading-[0.85]">
-                    Initialize the <br/>Agent Era.
+                    Ready to<br/>transform?
                 </h2>
 <div class="flex flex-col items-center gap-10">
 <a href="mailto:mason@oprova.ai" class="inline-block bg-primary text-on-primary font-black tracking-[0.2em] uppercase text-xl px-20 py-8 round-sm hover:scale-[1.05] transition-all duration-700 shadow-[0_0_60px_rgba(255,255,255,0.08)] no-underline">
