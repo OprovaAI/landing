@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Oprova AI | Agent Transformation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Berkeley+Mono&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #121315;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            width: 100vw;
+        }
+        .berkeley-mono {
+            font-family: 'Berkeley Mono', monospace;
+        }
+        .glow-pulse {
+            background: radial-gradient(circle, rgba(30, 134, 255, 0.08) 0%, rgba(18, 19, 21, 0) 70%);
+        }
+        .scene {
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding: 0 8%;
+        }
+        .text-reveal {
+            opacity: 0.9;
+            transition: opacity 1s ease-in-out;
+        }
+        .glass-panel {
+            backdrop-filter: blur(40px);
+            background: rgba(31, 32, 33, 0.6);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121315;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #343536;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline-variant": "#444748",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "on-primary-container": "#636565",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#343536",
+                        "background": "#121315",
+                        "on-secondary-container": "#002958",
+                        "tertiary-container": "#dfed1a",
+                        "surface-container": "#1f2021",
+                        "surface": "#121315",
+                        "surface-container-lowest": "#0d0e0f",
+                        "secondary-container": "#3f90ff",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-fixed": "#1b1d00",
+                        "surface-dim": "#121315",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-container-low": "#1b1c1d",
+                        "primary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#c4c7c8",
+                        "on-secondary-fixed-variant": "#00458d",
+                        "tertiary-fixed-dim": "#c3d000",
+                        "on-secondary-fixed": "#001b3e",
+                        "surface-variant": "#343536",
+                        "primary": "#ffffff",
+                        "tertiary-fixed": "#dfed1a",
+                        "on-primary": "#2f3131",
+                        "secondary-fixed-dim": "#aac7ff",
+                        "on-tertiary-fixed-variant": "#454a00",
+                        "outline": "#8e9192",
+                        "on-secondary": "#002f64",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-tertiary-container": "#636900",
+                        "surface-container-high": "#292a2b",
+                        "on-surface": "#e3e2e3",
+                        "tertiary": "#ffffff",
+                        "primary-container": "#e2e2e2",
+                        "surface-bright": "#38393a",
+                        "on-tertiary": "#2f3300",
+                        "inverse-surface": "#e3e2e3",
+                        "surface-tint": "#c6c6c7",
+                        "inverse-primary": "#5d5f5f",
+                        "inverse-on-surface": "#303032",
+                        "secondary-fixed": "#d6e3ff",
+                        "secondary": "#aac7ff",
+                        "on-background": "#e3e2e3"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-secondary selection:text-on-secondary w-screen overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 max-w-none bg-transparent backdrop-blur-md">
+<a href="#" class="flex items-center h-8">
+<img src="logo.svg" alt="Oprova AI" class="h-full w-auto invert brightness-200" />
+</a>
+<div class="hidden md:flex gap-10">
+<a class="font-['Inter'] font-black tracking-tighter uppercase text-sm md:text-base text-white border-b border-white/40 pb-1 hover:text-white transition-opacity duration-500" href="#">Evolution</a>
+<a class="font-['Inter'] font-black tracking-tighter uppercase text-sm md:text-base text-white/50 hover:text-white transition-opacity duration-500" href="#">Technology</a>
+<a class="font-['Inter'] font-black tracking-tighter uppercase text-sm md:text-base text-white/50 hover:text-white transition-opacity duration-500" href="#">Vision</a>
+<a class="font-['Inter'] font-black tracking-tighter uppercase text-sm md:text-base text-white/50 hover:text-white transition-opacity duration-500" href="#">Reserve</a>
+</div>
+<button class="bg-primary text-on-primary font-black tracking-tighter uppercase text-sm px-6 py-2 round-sm hover:opacity-80 transition-all duration-300">Inquire</button>
+</nav>
+<!-- Background Elements -->
+<div class="fixed inset-0 pointer-events-none z-0 w-screen h-screen">
+<div class="absolute top-1/4 -left-1/4 w-[600px] h-[600px] glow-pulse opacity-40"></div>
+<div class="absolute bottom-1/4 -right-1/4 w-[800px] h-[800px] glow-pulse opacity-30" style="background: radial-gradient(circle, rgba(170, 199, 255, 0.1) 0%, rgba(18, 19, 21, 0) 70%);"></div>
+</div>
+<main class="relative z-10 w-screen overflow-x-hidden">
+<!-- Scene 1: Opening - Centered -->
+<section class="scene items-center text-center">
+<div class="w-full">
+<span class="berkeley-mono text-[10px] tracking-[0.3em] text-secondary mb-6 block uppercase">Phase 01 / Initiation</span>
+<h1 class="text-[clamp(3.5rem,10vw,9rem)] font-[900] leading-[0.85] tracking-[-0.07em] uppercase mb-8 mx-auto">
+                    Companies run on agents.
+                </h1>
+<p class="text-xl md:text-3xl font-light tracking-tight text-on-surface-variant max-w-4xl mx-auto">
+                    Oprova AI transforms your company into an agent-operated system.
+                </p>
+</div>
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2">
+<span class="material-symbols-outlined text-white/20 animate-bounce">expand_more</span>
+</div>
+</section>
+<!-- Scene 2: Reality - Balanced Asymmetrical -->
+<section class="scene items-center">
+<div class="grid grid-cols-1 lg:grid-cols-2 w-full gap-20 items-center">
+<div class="hidden lg:flex flex-col gap-4 opacity-10">
+<div class="h-[1px] w-full bg-white"></div>
+<div class="h-[1px] w-3/4 bg-white"></div>
+<div class="h-[1px] w-1/2 bg-white"></div>
+</div>
+<div class="flex flex-col gap-12 text-right">
+<h2 class="text-5xl md:text-[clamp(4rem,7vw,8rem)] font-black tracking-tighter uppercase leading-[0.9] text-white">
+                        Most companies are still <br/><span class="text-white/30">human-operated.</span>
+</h2>
+<div class="space-y-4">
+<p class="text-2xl md:text-5xl font-medium tracking-tight text-white/60">Work is fragmented.</p>
+<p class="text-2xl md:text-5xl font-medium tracking-tight text-white/40">Decisions stall.</p>
+<p class="text-2xl md:text-5xl font-medium tracking-tight text-white/20">Execution depends on individuals.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Scene 3: Tension - Centered -->
+<section class="scene items-center text-center">
+<div class="w-full">
+<h3 class="text-5xl md:text-[clamp(4rem,10vw,8rem)] font-black tracking-widest uppercase text-white mb-4">
+                    This is what limits scale.
+                </h3>
+<div class="w-32 h-[1px] bg-secondary mx-auto mt-16 opacity-50"></div>
+</div>
+</section>
+<!-- Scene 4: Shift - Centered -->
+<section class="scene items-center text-center">
+<div class="w-full">
+<p class="berkeley-mono text-sm text-secondary-fixed-dim mb-8">System Update in Progress_</p>
+<h2 class="text-6xl md:text-[clamp(5rem,12vw,10rem)] font-black tracking-tighter uppercase leading-[0.8] mb-12">
+                    A new model <br/>is emerging.
+                </h2>
+<p class="text-4xl md:text-6xl font-black text-white/40 uppercase tracking-tighter">Companies run on agents.</p>
+</div>
+</section>
+<!-- Scene 5: Introduction - Balanced Grid -->
+<section class="scene items-center">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center w-full">
+<div class="text-left">
+<h2 class="text-5xl md:text-[clamp(3.5rem,6vw,7rem)] font-black tracking-tighter uppercase leading-[0.9] mb-10">
+                        Oprova AI enables this transformation.
+                    </h2>
+<p class="text-xl md:text-3xl text-on-surface-variant font-light leading-relaxed max-w-xl">
+                        A system of agents that understands, decides, and operates.
+                    </p>
+</div>
+<div class="relative aspect-square overflow-hidden bg-surface-container-high/20 flex items-center justify-center">
+<img alt="Abstract geometric monolith" class="w-full h-full object-cover grayscale opacity-60 mix-blend-lighten scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHc75SBQMUV33J5AYfiTygDT8sgQB4rd7jE8f7QmFmnzj4c_l7bnWLLEFGh26ujqEc9oh3SvjKifGV6GJZUvDi-ewQnxqXyETzucUdvaH7RODvFisRXDzSBpGDhZWVd5ulQxxbnjKADc_TQmxsR0dB7FZTBFCDPce6rjT6luXmCsNhuCNpb7F8_zw2r9IsJrIkFXE6B-fVSqSEZeMUBo8ODT5i9wVLNaLhn8lcScL4gznhLFYLDWOwP_LgScADVi6sp2tELXPSdZg"/>
+</div>
+</div>
+</section>
+<!-- Scene 6: Visualization - Expanded Symmetrical -->
+<section class="scene px-0">
+<div class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<!-- Grid Lines Symmetrical Background -->
+<div class="absolute inset-0 grid grid-cols-6 h-full w-full opacity-10 pointer-events-none">
+<div class="border-r border-white/20"></div>
+<div class="border-r border-white/20"></div>
+<div class="border-r border-white/20"></div>
+<div class="border-r border-white/20"></div>
+<div class="border-r border-white/20"></div>
+<div></div>
+</div>
+<!-- Center Node -->
+<div class="absolute z-20 flex flex-col items-center">
+<div class="w-48 h-48 rounded-full border border-secondary/30 flex items-center justify-center backdrop-blur-2xl">
+<span class="berkeley-mono text-secondary text-2xl tracking-[0.2em]">CORE</span>
+</div>
+</div>
+<!-- Symmetrical Orbiting Labels -->
+<div class="absolute top-[15%] left-[15%] flex flex-col gap-1 items-start">
+<span class="berkeley-mono text-xs text-white/40">01</span>
+<span class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Agents</span>
+</div>
+<div class="absolute top-[15%] right-[15%] flex flex-col gap-1 items-end text-right">
+<span class="berkeley-mono text-xs text-white/40">02</span>
+<span class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Reasoning</span>
+</div>
+<div class="absolute bottom-[15%] right-[15%] flex flex-col gap-1 items-end text-right">
+<span class="berkeley-mono text-xs text-white/40">03</span>
+<span class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Tools</span>
+</div>
+<div class="absolute bottom-[15%] left-[15%] flex flex-col gap-1 items-start">
+<span class="berkeley-mono text-xs text-white/40">04</span>
+<span class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Memory</span>
+</div>
+<!-- Dynamic Lines -->
+<div class="absolute w-[150vw] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-[35deg]"></div>
+<div class="absolute w-[150vw] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent -rotate-[15deg]"></div>
+<div class="absolute w-[150vw] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-[90deg]"></div>
+</div>
+</section>
+<!-- Scene 7: Philosophy - Centered Stack -->
+<section class="scene items-center text-center">
+<div class="space-y-16 w-full max-w-none flex flex-col items-center">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<span class="berkeley-mono text-xs text-secondary-fixed-dim uppercase tracking-widest shrink-0">STATUS: DEFINED</span>
+<h3 class="text-6xl md:text-[clamp(5rem,12vw,10rem)] font-black uppercase tracking-tighter leading-none">Not software.</h3>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-6">
+<span class="berkeley-mono text-xs text-secondary-fixed-dim uppercase tracking-widest shrink-0">STATUS: DEFINED</span>
+<h3 class="text-6xl md:text-[clamp(5rem,12vw,10rem)] font-black uppercase tracking-tighter leading-none text-white/40">Not automation.</h3>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-6">
+<span class="berkeley-mono text-xs text-secondary-fixed-dim uppercase tracking-widest shrink-0">STATUS: EVOLVED</span>
+<h3 class="text-6xl md:text-[clamp(5rem,12vw,10rem)] font-black uppercase tracking-tighter leading-none text-white/10">A new model.</h3>
+</div>
+</div>
+</section>
+<!-- Scene 8: Outcome - Balanced Horizontal Grid -->
+<section class="scene bg-surface-container-low/30">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 w-full">
+<div class="space-y-8 border-l border-white/10 pl-8 transition-colors hover:border-secondary/50 duration-700">
+<p class="berkeley-mono text-[10px] text-secondary tracking-[0.4em]">TEMPORAL</p>
+<h4 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight">Work becomes continuous.</h4>
+</div>
+<div class="space-y-8 border-l border-white/10 pl-8 transition-colors hover:border-secondary/50 duration-700">
+<p class="berkeley-mono text-[10px] text-secondary tracking-[0.4em]">CONTROL</p>
+<h4 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight">Execution becomes autonomous.</h4>
+</div>
+<div class="space-y-8 border-l border-white/10 pl-8 transition-colors hover:border-secondary/50 duration-700">
+<p class="berkeley-mono text-[10px] text-secondary tracking-[0.4em]">IDENTITY</p>
+<h4 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight">Companies become agentic.</h4>
+</div>
+</div>
+</section>
+<!-- Scene 9: Closing CTA - Centered -->
+<section class="scene items-center justify-center text-center">
+<div class="max-w-7xl w-full">
+<h2 class="text-6xl md:text-[clamp(4rem,10vw,9rem)] font-black tracking-tighter uppercase mb-20 leading-[0.85]">
+                    Initialize the <br/>Agent Era.
+                </h2>
+<div class="flex flex-col items-center gap-10">
+<button class="bg-primary text-on-primary font-black tracking-[0.2em] uppercase text-xl px-20 py-8 round-sm hover:scale-[1.05] transition-all duration-700 shadow-[0_0_60px_rgba(255,255,255,0.08)]">
+                        Initialize AX-01
+                    </button>
+<p class="berkeley-mono text-xs text-white/30 tracking-[0.5em] uppercase">Encrypted Uplink Established // Secure Node // 100% Load Balance</p>
+</div>
+</div>
+<!-- Symmetrical Background Accents -->
+<div class="absolute bottom-20 left-10 flex flex-col gap-3 opacity-10 hidden lg:flex">
+<div class="w-64 h-[1px] bg-white"></div>
+<div class="w-48 h-[1px] bg-white"></div>
+<div class="w-56 h-[1px] bg-white"></div>
+</div>
+<div class="absolute bottom-20 right-10 flex flex-col gap-3 opacity-10 hidden lg:flex items-end">
+<div class="w-64 h-[1px] bg-white"></div>
+<div class="w-48 h-[1px] bg-white"></div>
+<div class="w-56 h-[1px] bg-white"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full z-40 flex justify-between items-center px-8 py-10 bg-transparent pointer-events-none">
+<div class="font-['Berkeley_Mono'] text-[10px] tracking-widest uppercase text-white/30 pointer-events-auto">
+            © 2024 OPROVA AI CO., LTD. ALL RIGHTS RESERVED.
+        </div>
+<div class="flex gap-10 pointer-events-auto">
+<a class="font-['Berkeley_Mono'] text-[10px] tracking-widest uppercase text-white/30 hover:text-white transition-colors" href="#">Terminal</a>
+<a class="font-['Berkeley_Mono'] text-[10px] tracking-widest uppercase text-white/30 hover:text-white transition-colors" href="#">Protocol</a>
+<a class="font-['Berkeley_Mono'] text-[10px] tracking-widest uppercase text-white/30 hover:text-white transition-colors" href="#">Nodes</a>
+</div>
+</footer>
+</body></html>
