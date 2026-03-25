@@ -17,7 +17,6 @@
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            width: 100vw;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
@@ -30,7 +29,7 @@
         }
         .scene {
             height: 100vh;
-            width: 100vw;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -169,7 +168,7 @@
         }
     </script>
 </head>
-<body class="bg-background text-on-background selection:bg-secondary selection:text-on-secondary w-screen overflow-x-hidden">
+<body class="bg-background text-on-background selection:bg-secondary selection:text-on-secondary overflow-x-hidden">
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 max-w-none bg-transparent backdrop-blur-md">
 <a href="#" class="flex items-center h-10 md:h-12">
@@ -200,11 +199,11 @@
 <a href="mailto:mason@oprova.ai" class="mt-4 bg-primary text-on-primary font-black tracking-tighter uppercase text-lg px-10 py-4 rounded-sm">Inquire</a>
 </div>
 <!-- Background Elements -->
-<div class="fixed inset-0 pointer-events-none z-0 w-screen h-screen">
+<div class="fixed inset-0 pointer-events-none z-0">
 <div class="absolute top-1/4 -left-1/4 w-[600px] h-[600px] glow-pulse opacity-40"></div>
 <div class="absolute bottom-1/4 -right-1/4 w-[800px] h-[800px] glow-pulse opacity-30" style="background: radial-gradient(circle, rgba(170, 199, 255, 0.1) 0%, rgba(18, 19, 21, 0) 70%);"></div>
 </div>
-<main class="relative z-10 w-screen overflow-x-hidden overflow-y-auto h-screen snap-y snap-mandatory">
+<main class="relative z-10 w-full overflow-x-hidden overflow-y-auto h-screen snap-y snap-mandatory">
 <!-- Scene 1: Opening - Centered -->
 <section class="scene items-center text-center">
 <div class="w-full fade-up">
