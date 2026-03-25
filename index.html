@@ -177,8 +177,24 @@
 <a class="font-['Inter'] font-black tracking-tighter uppercase text-sm md:text-base text-white/50 hover:text-white transition-opacity duration-500" href="#vision">Vision</a>
 <a class="font-['Inter'] font-black tracking-tighter uppercase text-sm md:text-base text-white/50 hover:text-white transition-opacity duration-500" href="#contact">Contact</a>
 </div>
-<a href="mailto:mason@oprova.ai" class="bg-primary text-on-primary font-black tracking-tighter uppercase text-sm px-6 py-2 round-sm hover:opacity-80 transition-all duration-300 no-underline">Inquire</a>
+<a href="mailto:mason@oprova.ai" class="hidden md:inline-block bg-primary text-on-primary font-black tracking-tighter uppercase text-sm px-6 py-2 rounded-sm hover:opacity-80 transition-all duration-300 no-underline">Inquire</a>
+<button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+<span class="block w-6 h-[2px] bg-white transition-all duration-300"></span>
+<span class="block w-6 h-[2px] bg-white transition-all duration-300"></span>
+<span class="block w-4 h-[2px] bg-white transition-all duration-300"></span>
+</button>
 </nav>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none md:hidden">
+<button id="mobile-menu-close" class="absolute top-6 right-8 text-white/50 hover:text-white p-2" aria-label="Close menu">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+<a class="text-3xl font-black tracking-tighter uppercase text-white/70 hover:text-white transition-colors" href="#evolution" onclick="closeMobileMenu()">Evolution</a>
+<a class="text-3xl font-black tracking-tighter uppercase text-white/70 hover:text-white transition-colors" href="#technology" onclick="closeMobileMenu()">Technology</a>
+<a class="text-3xl font-black tracking-tighter uppercase text-white/70 hover:text-white transition-colors" href="#vision" onclick="closeMobileMenu()">Vision</a>
+<a class="text-3xl font-black tracking-tighter uppercase text-white/70 hover:text-white transition-colors" href="#contact" onclick="closeMobileMenu()">Contact</a>
+<a href="mailto:mason@oprova.ai" class="mt-4 bg-primary text-on-primary font-black tracking-tighter uppercase text-lg px-10 py-4 rounded-sm">Inquire</a>
+</div>
 <!-- Background Elements -->
 <div class="fixed inset-0 pointer-events-none z-0 w-screen h-screen">
 <div class="absolute top-1/4 -left-1/4 w-[600px] h-[600px] glow-pulse opacity-40"></div>
@@ -274,21 +290,21 @@
 </div>
 </div>
 <!-- Symmetrical Orbiting Labels -->
-<div class="absolute top-[15%] left-[15%] flex flex-col gap-1 items-start">
+<div class="absolute top-[20%] left-[5%] md:top-[15%] md:left-[15%] flex flex-col gap-1 items-start">
 <span class="berkeley-mono text-xs text-white/40">01</span>
-<span class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Agents</span>
+<span class="text-2xl md:text-6xl font-black uppercase tracking-tighter">Agents</span>
 </div>
-<div class="absolute top-[15%] right-[15%] flex flex-col gap-1 items-end text-right">
+<div class="absolute top-[20%] right-[5%] md:top-[15%] md:right-[15%] flex flex-col gap-1 items-end text-right">
 <span class="berkeley-mono text-xs text-white/40">02</span>
-<span class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Reasoning</span>
+<span class="text-2xl md:text-6xl font-black uppercase tracking-tighter">Reasoning</span>
 </div>
-<div class="absolute bottom-[15%] right-[15%] flex flex-col gap-1 items-end text-right">
+<div class="absolute bottom-[20%] right-[5%] md:bottom-[15%] md:right-[15%] flex flex-col gap-1 items-end text-right">
 <span class="berkeley-mono text-xs text-white/40">03</span>
-<span class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Tools</span>
+<span class="text-2xl md:text-6xl font-black uppercase tracking-tighter">Tools</span>
 </div>
-<div class="absolute bottom-[15%] left-[15%] flex flex-col gap-1 items-start">
+<div class="absolute bottom-[20%] left-[5%] md:bottom-[15%] md:left-[15%] flex flex-col gap-1 items-start">
 <span class="berkeley-mono text-xs text-white/40">04</span>
-<span class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Memory</span>
+<span class="text-2xl md:text-6xl font-black uppercase tracking-tighter">Memory</span>
 </div>
 <!-- Dynamic Lines -->
 <div class="absolute w-[150vw] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-[35deg]"></div>
@@ -331,34 +347,34 @@
                     Ready to<br/>transform?
                 </h2>
 <div class="flex flex-col items-center gap-10">
-<a href="mailto:mason@oprova.ai" class="inline-block bg-primary text-on-primary font-black tracking-[0.2em] uppercase text-xl px-20 py-8 round-sm hover:scale-[1.05] transition-all duration-700 shadow-[0_0_60px_rgba(255,255,255,0.08)] no-underline">
+<a href="mailto:mason@oprova.ai" class="inline-block bg-primary text-on-primary font-black tracking-[0.2em] uppercase text-xl px-20 py-8 rounded-sm hover:scale-[1.05] transition-all duration-700 shadow-[0_0_60px_rgba(255,255,255,0.08)] no-underline">
                         Get in Touch
                     </a>
 <p class="berkeley-mono text-xs text-white/30 tracking-[0.3em] uppercase">mason@oprova.ai</p>
 </div>
 </div>
 <!-- Symmetrical Background Accents -->
-<div class="absolute bottom-20 left-10 flex flex-col gap-3 opacity-10 hidden lg:flex">
+<div class="absolute bottom-20 left-10 hidden lg:flex flex-col gap-3 opacity-10">
 <div class="w-64 h-[1px] bg-white"></div>
 <div class="w-48 h-[1px] bg-white"></div>
 <div class="w-56 h-[1px] bg-white"></div>
 </div>
-<div class="absolute bottom-20 right-10 flex flex-col gap-3 opacity-10 hidden lg:flex items-end">
+<div class="absolute bottom-20 right-10 hidden lg:flex flex-col gap-3 opacity-10 items-end">
 <div class="w-64 h-[1px] bg-white"></div>
 <div class="w-48 h-[1px] bg-white"></div>
 <div class="w-56 h-[1px] bg-white"></div>
 </div>
 </section>
-</main>
-<!-- Footer -->
-<footer class="fixed bottom-0 w-full z-40 flex justify-between items-center px-8 py-10 bg-transparent pointer-events-none">
-<div class="berkeley-mono text-[10px] tracking-widest uppercase text-white/30 pointer-events-auto">
+<!-- Footer (inside scroll container) -->
+<footer class="w-full flex justify-between items-center px-8 py-6 bg-transparent shrink-0">
+<div class="berkeley-mono text-[10px] tracking-widest uppercase text-white/30">
             © 2026 OPROVA AI CO., LTD. ALL RIGHTS RESERVED.
         </div>
-<div class="flex gap-10 pointer-events-auto">
+<div class="flex gap-10">
 <a class="berkeley-mono text-[10px] tracking-widest uppercase text-white/30 hover:text-white transition-colors" href="mailto:mason@oprova.ai">Contact</a>
 </div>
 </footer>
+</main>
 <script>
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -376,5 +392,17 @@
     setTimeout(() => {
         document.querySelectorAll('.scene:first-child .fade-up').forEach(el => el.classList.add('visible'));
     }, 300);
+
+    // Mobile menu
+    const mobileMenu = document.getElementById('mobile-menu');
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+        mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+    });
+    function closeMobileMenu() {
+        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+    }
+    document.getElementById('mobile-menu-close').addEventListener('click', closeMobileMenu);
 </script>
 </body></html>
