@@ -4,6 +4,10 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Oprova AI | Agent Transformation</title>
+<meta name="description" content="Oprova AI transforms your company into an agent-operated system. Agents that reason, decide, and execute — working alongside your team, 24/7." />
+<meta property="og:title" content="Oprova AI | Agent Transformation" />
+<meta property="og:description" content="We transform your company into an agent-operated system." />
+<meta property="og:type" content="website" />
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -266,7 +270,7 @@
                         A system of agents that understands, decides, and operates.
                     </p>
 </div>
-<div class="relative aspect-square overflow-hidden bg-surface-container-high/20 flex items-center justify-center fade-in">
+<div class="relative aspect-[4/3] md:aspect-square overflow-hidden bg-surface-container-high/20 flex items-center justify-center fade-in">
 <img alt="Abstract geometric monolith" class="w-full h-full object-cover grayscale opacity-60 mix-blend-lighten scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHc75SBQMUV33J5AYfiTygDT8sgQB4rd7jE8f7QmFmnzj4c_l7bnWLLEFGh26ujqEc9oh3SvjKifGV6GJZUvDi-ewQnxqXyETzucUdvaH7RODvFisRXDzSBpGDhZWVd5ulQxxbnjKADc_TQmxsR0dB7FZTBFCDPce6rjT6luXmCsNhuCNpb7F8_zw2r9IsJrIkFXE6B-fVSqSEZeMUBo8ODT5i9wVLNaLhn8lcScL4gznhLFYLDWOwP_LgScADVi6sp2tELXPSdZg"/>
 </div>
 </div>
@@ -347,7 +351,7 @@
                     Ready to<br/>transform?
                 </h2>
 <div class="flex flex-col items-center gap-10">
-<a href="mailto:mason@oprova.ai" class="inline-block bg-primary text-on-primary font-black tracking-[0.2em] uppercase text-xl px-20 py-8 rounded-sm hover:scale-[1.05] transition-all duration-700 shadow-[0_0_60px_rgba(255,255,255,0.08)] no-underline">
+<a href="mailto:mason@oprova.ai" class="inline-block bg-primary text-on-primary font-black tracking-[0.2em] uppercase text-base md:text-xl px-10 md:px-20 py-6 md:py-8 rounded-sm hover:scale-[1.05] transition-all duration-700 shadow-[0_0_60px_rgba(255,255,255,0.08)] no-underline">
                         Get in Touch
                     </a>
 <p class="berkeley-mono text-xs text-white/30 tracking-[0.3em] uppercase">mason@oprova.ai</p>
@@ -392,6 +396,20 @@
     setTimeout(() => {
         document.querySelectorAll('.scene:first-child .fade-up').forEach(el => el.classList.add('visible'));
     }, 300);
+
+    // Anchor scroll within main container
+    const mainEl = document.querySelector('main');
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const id = link.getAttribute('href').slice(1);
+            if (!id) return;
+            const target = document.getElementById(id);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
 
     // Mobile menu
     const mobileMenu = document.getElementById('mobile-menu');
