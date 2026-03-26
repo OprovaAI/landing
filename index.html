@@ -96,23 +96,9 @@
             opacity: 1;
             transform: scale(1);
         }
-        /* Gradient intensity shift — bottom items brighten on scroll */
-        @keyframes brighten {
-            from { opacity: var(--start-opacity); }
-            to { opacity: var(--end-opacity); }
-        }
-        .gradient-shift span,
-        .gradient-shift h3 {
-            transition: opacity 1.2s ease-out;
-        }
-        .gradient-shift.visible .brighten-1 {
-            animation: brighten 1.2s 0.3s ease-out forwards;
-        }
-        .gradient-shift.visible .brighten-2 {
-            animation: brighten 1.4s 0.6s ease-out forwards;
-        }
-        .gradient-shift.visible .brighten-3 {
-            animation: brighten 1.6s 0.9s ease-out forwards;
+        /* Gradient intensity shift — controlled by scroll position via JS */
+        .brighten-1, .brighten-2, .brighten-3 {
+            transition: opacity 0.15s ease-out;
         }
         ::-webkit-scrollbar {
             width: 4px;
@@ -416,7 +402,7 @@
         });
     }, { threshold: 0.2, root: document.querySelector('main') });
 
-    document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right, .scale-in, .stagger, .gradient-shift').forEach(el => {
+    document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right, .scale-in, .stagger').forEach(el => {
         observer.observe(el);
     });
 
@@ -450,5 +436,36 @@
         mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
     }
     document.getElementById('mobile-menu-close').addEventListener('click', closeMobileMenu);
+
+    // Scroll-driven gradient intensity
+    // Maps scroll progress through a section (0→1) to opacity for each child
+    const scrollMain = document.querySelector('main');
+    const gradientSections = document.querySelectorAll('.gradient-shift');
+
+    function lerp(a, b, t) { return a + (b - a) * Math.max(0, Math.min(1, t)); }
+
+    function updateGradients() {
+        const vh = scrollMain.clientHeight;
+        gradientSections.forEach(section => {
+            const parent = section.closest('.scene');
+            const rect = parent.getBoundingClientRect();
+            // progress: 0 = section just entering bottom, 1 = section fully scrolled through
+            const progress = Math.max(0, Math.min(1, 1 - (rect.top / vh)));
+
+            section.querySelectorAll('.brighten-1, .brighten-2, .brighten-3').forEach(el => {
+                const start = parseFloat(el.style.getPropertyValue('--start-opacity'));
+                const end = parseFloat(el.style.getPropertyValue('--end-opacity'));
+                // Each level kicks in progressively later
+                let localProgress = progress;
+                if (el.classList.contains('brighten-1')) localProgress = Math.max(0, (progress - 0.1) / 0.6);
+                if (el.classList.contains('brighten-2')) localProgress = Math.max(0, (progress - 0.25) / 0.6);
+                if (el.classList.contains('brighten-3')) localProgress = Math.max(0, (progress - 0.4) / 0.55);
+
+                el.style.opacity = lerp(start, end, localProgress);
+            });
+        });
+        requestAnimationFrame(updateGradients);
+    }
+    requestAnimationFrame(updateGradients);
 </script>
 </body></html>
