@@ -96,6 +96,24 @@
             opacity: 1;
             transform: scale(1);
         }
+        /* Gradient intensity shift — bottom items brighten on scroll */
+        @keyframes brighten {
+            from { opacity: var(--start-opacity); }
+            to { opacity: var(--end-opacity); }
+        }
+        .gradient-shift span,
+        .gradient-shift h3 {
+            transition: opacity 1.2s ease-out;
+        }
+        .gradient-shift.visible .brighten-1 {
+            animation: brighten 1.2s 0.3s ease-out forwards;
+        }
+        .gradient-shift.visible .brighten-2 {
+            animation: brighten 1.4s 0.6s ease-out forwards;
+        }
+        .gradient-shift.visible .brighten-3 {
+            animation: brighten 1.6s 0.9s ease-out forwards;
+        }
         ::-webkit-scrollbar {
             width: 4px;
         }
@@ -233,10 +251,11 @@
 <h2 class="text-4xl md:text-[clamp(3rem,5vw,5.5rem)] font-black tracking-tighter uppercase leading-[0.9] text-white">
                         Most companies are still <br/><span class="text-white/30">human-operated.</span>
 </h2>
-<div class="space-y-4">
-<p class="text-xl md:text-3xl font-medium tracking-tight text-white/60">Work is fragmented.</p>
-<p class="text-xl md:text-3xl font-medium tracking-tight text-white/40">Decisions stall.</p>
-<p class="text-xl md:text-3xl font-medium tracking-tight text-white/20">Execution depends on individuals.</p>
+<!-- [변경] 그라데이션 강도 애니메이션: 아래로 갈수록 밝아짐 -->
+<div class="space-y-4 gradient-shift">
+<p class="text-xl md:text-3xl font-medium tracking-tight text-white/30 brighten-1" style="--start-opacity:0.3;--end-opacity:0.5">Work is fragmented.</p>
+<p class="text-xl md:text-3xl font-medium tracking-tight text-white/20 brighten-2" style="--start-opacity:0.2;--end-opacity:0.6">Decisions stall.</p>
+<p class="text-xl md:text-3xl font-medium tracking-tight text-white/10 brighten-3" style="--start-opacity:0.1;--end-opacity:0.9">Execution depends on individuals.</p>
 </div>
 </div>
 </div>
@@ -325,10 +344,11 @@
 </section>
 <!-- Scene 7: Philosophy - Centered Stack -->
 <section id="vision" class="scene items-center text-center">
-<div class="space-y-12 w-full max-w-none flex flex-col items-center stagger">
-<h3 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none">Not software.</h3>
-<h3 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none text-white/40">Not automation.</h3>
-<h3 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none text-white/15">Agent intelligence.</h3>
+<!-- [변경] 그라데이션 강도 애니메이션: "Agent intelligence"가 가장 밝아짐 -->
+<div class="space-y-12 w-full max-w-none flex flex-col items-center stagger gradient-shift">
+<h3 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none text-white/40 brighten-1" style="--start-opacity:0.4;--end-opacity:0.35">Not software.</h3>
+<h3 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none text-white/20 brighten-2" style="--start-opacity:0.2;--end-opacity:0.3">Not automation.</h3>
+<h3 class="text-5xl md:text-[clamp(4rem,8vw,7rem)] font-black uppercase tracking-tighter leading-none text-white/10 brighten-3" style="--start-opacity:0.1;--end-opacity:1">Agent intelligence.</h3>
 </div>
 </section>
 <!-- Scene 8: Outcome - Balanced Horizontal Grid -->
@@ -396,7 +416,7 @@
         });
     }, { threshold: 0.2, root: document.querySelector('main') });
 
-    document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right, .scale-in, .stagger').forEach(el => {
+    document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right, .scale-in, .stagger, .gradient-shift').forEach(el => {
         observer.observe(el);
     });
 
