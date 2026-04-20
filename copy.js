@@ -80,7 +80,7 @@ window.OPROVA_COPY = {
     },
     cta: {
       eyebrow: "Design Partner Program",
-      title: "We work with four\npartners a quarter.\nAny more and we can't do it well.",
+      title: "Four partner slots\nleft this quarter.",
       sub: "A short note about your operation is enough. I'll write back with what I'd build first and whether a diagnostic week is worth your time — usually within a business day.",
       book: "mason@oprova.ai",
       mail: "Replies in EN or KO · Mason, founder",
@@ -166,7 +166,7 @@ window.OPROVA_COPY = {
     },
     cta: {
       eyebrow: "Design Partner Program",
-      title: "한 분기에\n네 팀하고만 일합니다.\n그 이상은 제가 감당을 못 해요.",
+      title: "이번 분기는\n네 팀 남았습니다.",
       sub: "운영에 대한 짧은 메모면 됩니다. 뭘 먼저 지을지, 진단 일주일이 시간 쓸 만한지에 대해 — 제가 직접 답장드려요. 보통 영업일 하루 안.",
       book: "mason@oprova.ai",
       mail: "한국어 / English 모두 가능 · Mason, 파운더",
